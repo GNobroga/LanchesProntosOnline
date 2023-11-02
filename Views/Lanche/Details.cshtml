@@ -1,0 +1,23 @@
+@model LancheDetailsViewModel
+
+<div class="card border-0 mx-auto" style="max-width: 520px;">
+    <div class="card-body">
+    <div class="text-center">
+        <img src="@Model.Lanche.ImagemUrl" alt="@Model.Lanche.DescricaoCurta">
+    </div>
+      <div class="d-flex flex-column mb-3">
+        <p class="fs-6 display-5">Preço: <strong class="text-success fw-bold">@Model.Lanche.Preco.ToString("c")</strong></p>
+        <div class="fs-6 display-5 d-flex gap-2 align-items-center">
+            <p class="position-relative" style="top: 0.5rem;">Quantidade: <strong class="text-success fw-bold">@Model.Quantidade.ToString("d3")</strong></p>
+            <a class="btn btn-success btn-sm fw-bold" asp-action="Details" asp-route-lancheId="@Model.Lanche.LancheId" asp-route-lancheQnt="@(Model.Quantidade + 1)">+</a>
+            <a class="btn btn-danger btn-sm fw-bold" asp-action="Details" asp-route-lancheId="@Model.Lanche.LancheId" asp-route-lancheQnt="@(Model.Quantidade - 1)">-</a>
+        </div>
+      </div>
+      <h5 class="card-title lead fs-6">@Model.Lanche.DescricaoCurta</h5>
+      <p class="card-text">@Model.Lanche.Categoria.CategoriaNome</p>
+      <div class="d-flex flex-column flex-sm-row gap-3">
+        <a asp-action="List" asp-controller="Lanche" class="btn btn-outline-info">Ver todos os lanches</a>
+        <a asp-action="AdicionarItemNoCarrinhoCompra" asp-controller="Carrinho" asp-route-lancheId="@Model.Lanche.LancheId" asp-route-lancheQnt="@(Model.Quantidade - 1)" class="btn btn-primary">Adicionar lanche @Model.Lanche.Categoria.CategoriaNome ao carrinho</a>
+      </div>
+    </div>
+</div>

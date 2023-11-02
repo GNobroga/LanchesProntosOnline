@@ -1,0 +1,10 @@
+@model Lanche
+
+<div class="lanche">
+    <a class="display-6 fs-3 fw-bold" asp-action="Details" asp-controller="Lanche" asp-route-lancheId="@Model.LancheId">@Model.Nome</a>
+    <img src="@Model.ImagemUrl" alt="@Model.DescricaoCurta">
+    <p class="fs-4">@Html.Raw($"Preço: <strong class=\"text-success\">{Model.Preco:C}</strong>")</p>
+    <p>@Model.DescricaoCurta</p>
+    <p class="lead fs-6">@(Model.DescricaoDetalhada)</p>
+    <a class="btn btn-primary" asp-action="AdicionarItemNoCarrinhoCompra" asp-controller="Carrinho" asp-route-lancheId="@Model.LancheId">Incluir no Carrinho</a>
+</div>

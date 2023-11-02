@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Lanche>
+@{
+    var photos = new List<string>() {"images/photo1.jpeg", "images/photo2.jpeg", "images/photo3.jpeg"};
+}
+
+<partial name="_Carousel" model="@photos"></partial>
+ 
+<div class="container">
+    <div class="d-flex gap-2 flex-column mt-5">
+        <h1 class="display-5 fs-2 fw-normal text-uppercase">Os mais escolhidos da semana</h1>
+        <p class="display-6 fs-5">Faça um pedido agora mesmo!</p>
+    </div>
+    
+    <div class="mt-4 row row-cols-lg-4 row-cols-sm-2 justify-content-center align-items-center">
+        @foreach (Lanche l in Model) 
+        {
+            <partial name="_ListItem" model="@l"/>
+        }
+    </div>    
+</div>

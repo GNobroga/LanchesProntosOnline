@@ -1,0 +1,65 @@
+@model CarrinhoCompraViewModel
+
+<div class="container mt-2">
+    <div class="d-flex justify-content-between">
+       <div class="d-flex align-items-center gap-3">
+            <img src="/images/Full-Cart-icon.png" alt="Card icon" class="position-relative" style="bottom: 2px;">
+            <h1 class="display-6 fs-3">Seu carrinho de compras: </h1>
+       </div>
+       <partial name="_Alert"/>
+    </div>
+    <table class="table text-end mt-2">
+        <thead class="border-primary" >
+            <tr class="display-6 fs-6">
+                <th>Lanche</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Subtotal</th>
+                <th style="width: 10%;"></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider"></tbody>
+        @if (Model.Carrinho.Count() == 0) 
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                   <div class="py-2 fs-6"> Não há nada no carrinho</div>
+                </td>
+            </tr>
+        }
+        else 
+        {
+
+           @foreach(var pedido in Model.Carrinho)
+           {
+            <tr>
+                <td>@pedido.Lanche.Nome</td>
+                <td><span class="text-success">@pedido.Lanche.Preco.ToString("c")</span></td>
+                <td>@pedido.Quantidade</td>
+                <td><span class="text-success">@((pedido.Quantidade * pedido.Lanche.Preco).ToString("c"))</span></td>
+                <td>
+                    <a asp-action="RemoverDoCarrinho" asp-route-pedidoId="@pedido.PedidoId">
+                        <img src="/images/delete.png" alt="" width="30px">
+                    </a>
+                </td>
+            </tr>
+           }
+        }
+         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <div class="d-flex px-2 py-1 justify-content-end gap-5 fs-5 display-6">
+                        <strong>Total: </strong>
+                        <strong class="text-success">R$ @(Model.Total)</strong>
+                    </div>
+                </td> 
+            </tr>
+            
+        </tfoot>
+    </table>
+    <div class="d-flex gap-3">
+        <a href="#" class="btn btn-success">Encerrar Pedido</a>
+        <a asp-action="List" asp-controller="Lanche" class="btn text-white" style="background: #FF9000;">Continuar Comprando</a>
+    </div>
+</div>

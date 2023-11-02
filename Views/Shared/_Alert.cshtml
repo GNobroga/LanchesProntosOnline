@@ -1,0 +1,9 @@
+
+@if (TempData.ContainsKey("Success") || TempData.ContainsKey("Failure"))
+{   
+    var isSuccess = TempData.ContainsKey("Success");
+    var message = TempData["Success"] ?? TempData["Failure"];
+    var alertClass = isSuccess ? "alert-success" : "alert-danger";
+
+    <div class="alert @(alertClass)" role="alert">@message</div>
+}

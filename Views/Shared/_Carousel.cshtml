@@ -1,0 +1,44 @@
+@model List<string>
+
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    @for (int i = 0 ; i < Model.Count() ; i++) 
+    {
+        var imageUrl = Model[i];
+
+        if (i == 0) 
+        {
+            <div class="carousel-item active">
+                <img src="@imageUrl" class="d-block w-100" alt="..." style="max-height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1>Sabores</h1>
+                  <p>Pontos de carnes ideias para o seu paladar.</p>
+                </div>
+            </div>
+    
+            continue;
+        }
+
+          <div class="carousel-item">
+            <img src="@imageUrl" class="d-block w-100" alt="..." style="max-height: 500px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Pão e Carne</h1>
+              <p>Lanches que te farão ter um orgasmo.</p>
+            </div>
+        </div>
+    }
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

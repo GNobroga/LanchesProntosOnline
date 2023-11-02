@@ -1,0 +1,12 @@
+body {
+  background-color: white;
+}
+
+table th {
+  width: 20%;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+}

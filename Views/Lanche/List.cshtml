@@ -1,0 +1,57 @@
+@model LancheListViewModel
+@{
+    ViewData["Title"] = "Lanche - List";
+}
+
+<div class="container d-flex flex-column gap-5 mt-3">
+    
+    <div class="row">
+        <h1 class="display-6 col-9">Todos os Lanches disponíveis</h1>
+        <select class="form-select col" id="categoriaSelect">
+            <option value="-1">Todos os lanches</option>
+            @foreach (Categoria c in Model.Categorias)
+            {
+                if (Model.CategoriaSelecionada == c.CategoriaId) 
+                {
+                    <option value="@c.CategoriaId" selected>@(c.CategoriaNome)</option>
+                }
+                else 
+                {
+                    <option value="@c.CategoriaId">@(c.CategoriaNome)</option>
+                }
+                
+            }
+        </select>
+    </div>
+
+    @if (Model.Lanches.Count() == 0) 
+    {
+        <p class="display-3">Não há nenhum lanche.</p>
+    }
+    else 
+    {
+
+        <div class="row row-cols-md-3  row-cols-lg-5 row-cols-1 row-cols-sm-2 row-cols-sm-2 gap-md-5 align-items-center justify-content-center" style="cursor: pointer;">
+            @foreach (Lanche lanche in Model.Lanches)
+            {
+                if (lanche.CategoriaId == Model.CategoriaSelecionada) 
+                {
+                    <partial name="_ListItem" for="@lanche"/>
+                }
+                else if (Model.CategoriaSelecionada == -1) 
+                {
+                    <partial name="_ListItem" for="@lanche"/>
+                }
+            }
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+<script>
+    document.getElementById('categoriaSelect').addEventListener('change', e => {
+        window.location.href = `/lanche/list/?cid=${e.target.value}`;
+    });
+</script>
+}

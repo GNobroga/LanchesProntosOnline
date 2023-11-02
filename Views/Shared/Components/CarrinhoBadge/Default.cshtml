@@ -1,0 +1,13 @@
+@model int
+
+@if (Model > 0) 
+{
+    <button class="position-relative bg-transparent border-0" onclick="(() => window.location = '/carrinho')()">
+        <img src="/images/cart-5-16.ico" alt="">
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+            @Model
+            <span class="visually-hidden">unread messages</span>
+        </span>
+    </button>
+}
+
