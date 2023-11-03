@@ -11,7 +11,7 @@ namespace VendaLanches.Repositories
 
         public EntregaRepositoryImpl(AppDbContext context) => _context = context;
 
-        public void CriarEntrega(Entrega entrega, IEnumerable<Pedido> pedidos)
+        public Entrega CriarEntrega(Entrega entrega, IEnumerable<Pedido> pedidos)
         {   
             _context.Entregas.Add(entrega);
             _context.SaveChanges();
@@ -33,6 +33,10 @@ namespace VendaLanches.Repositories
             savedEntrega.PedidoEnviado = DateTime.Now.ToUniversalTime();
 
             _context.SaveChanges();
+
+            _context.Entry(savedEntrega).State = EntityState.Detached;
+            
+            return savedEntrega;
         }
     }
 }

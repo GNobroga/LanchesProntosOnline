@@ -3,7 +3,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between">
        <div class="d-flex align-items-center gap-3">
-            <img src="/images/Full-Cart-icon.png" alt="Card icon" class="position-relative" style="bottom: 2px;">
+            <i class="bi bi-cart4 fs-1 position-relative" style="bottom: 5px;"></i>
             <h1 class="display-6 fs-3">Seu carrinho de compras: </h1>
        </div>
        <partial name="_Alert"/>
@@ -38,9 +38,11 @@
                 <td>@pedido.Quantidade</td>
                 <td><span class="text-success">@((pedido.Quantidade * pedido.Lanche.Preco).ToString("c"))</span></td>
                 <td>
-                    <a asp-action="RemoverDoCarrinho" asp-route-pedidoId="@pedido.PedidoId">
-                        <img src="/images/delete.png" alt="" width="30px">
-                    </a>
+                    <div class="d-flex justify-content-end">
+                        <a asp-action="RemoverDoCarrinho" asp-route-pedidoId="@pedido.PedidoId" class="position-relative" style="bottom: 6px;">
+                            <i class="bi bi-x-circle-fill fs-4 text-danger"></i>
+                        </a>
+                    </div>
                 </td>
             </tr>
            }
@@ -51,7 +53,7 @@
                 <td colspan="5">
                     <div class="d-flex px-2 py-1 justify-content-end gap-5 fs-5 display-6">
                         <strong>Total: </strong>
-                        <strong class="text-success">R$ @(Model.Total)</strong>
+                        <strong class="text-success">R$ @(Model.Total.ToString("N2"))</strong>
                     </div>
                 </td> 
             </tr>

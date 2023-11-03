@@ -31,14 +31,17 @@ namespace VendaLanches.Controllers
         [HttpPost]
         public ViewResult Checkout([FromForm] Entrega entrega) 
         {   
-            if (!ModelState.IsValid) 
-            {
-                return View(entrega);
-            }
+            if (!ModelState.IsValid) return View(entrega);
+            
+            var pedidos = _carrinhoRepository.GetPedidosNoCarrinho();
+            var entregaRetornada = _entregaRepository.CriarEntrega(entrega, pedidos);
+            _carrinhoRepository.LimparCarrinho();
 
-            _entregaRepository.CriarEntrega(entrega, _carrinhoRepository.GetPedidosNoCarrinho());
-           _carrinhoRepository.LimparCarrinho();
-            return View();
+            ViewBag.MensagemPedidoFinalizado = "Obrigado pelo seu pedido :)";
+
+            entregaRetornada.Pedidos = pedidos;
+
+            return View("CheckoutFinished", entregaRetornada);
         }
     }
 }

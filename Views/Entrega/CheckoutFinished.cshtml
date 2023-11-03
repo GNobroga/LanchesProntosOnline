@@ -1,0 +1,38 @@
+@model Entrega
+
+<div class="container">
+    <div class="container border d-flex flex-column gap-3 p-0 mt-4 shadow">
+        <div class="p-4 bg-primary text-white">
+            <h1 class="display-6 fs-2 fw-semibold">@ViewBag.MensagemPedidoFinalizado</h1>
+        </div>
+        <div class="d-flex flex-column gap-3 p-4">
+            <span>Cliente: <strong>@Model.Nome</strong></span>
+            <span>Data do Pedido: <strong class="text-info">@Model.PedidoEnviado</strong></span>
+            <span>Número do Pedido: <strong>@Model.EntregaId</strong></span>
+        </div>
+        <div class="px-4 pb-4">
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Quantidade</th>
+                    <th>Lanche</th>
+                    <th>Valor Unitário</th>
+                </tr>
+                @foreach (var pedido in Model.Pedidos) 
+                {
+                    <tr>
+                        <td><img src="@pedido.Lanche.ImagemUrl" alt="" width="40">
+                        </td>
+                        <td>@pedido.Quantidade</td>
+                        <td>@pedido.Lanche.Nome</td>
+                        <td class="text-success">R$ @pedido.Lanche.Preco.ToString("N2")</td>
+                    </tr>
+                }
+            </table>
+            <h1 class="display-5 fs-4">Valor total do pedido: <strong class="text-success">R$ @Model.PedidoTotal.ToString("N2")</strong></h1>
+        </div>
+    </div>
+    <div class="text-center mt-4 fs-3">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-lg">Retornar</a>
+    </div>
+</div>
