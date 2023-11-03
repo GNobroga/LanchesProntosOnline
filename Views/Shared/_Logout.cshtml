@@ -1,0 +1,20 @@
+<div class="d-flex gap-2 text-white">
+    @if (User.Identity.IsAuthenticated) 
+    {
+        <div class="dropdown">
+            <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @User.Identity.Name
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Profile</a></li>
+              <li><a class="dropdown-item" asp-action="Logout" asp-controller="Account">Logout</a></li>
+            </ul>
+          </div>
+    }
+    else 
+    {
+        <a class="btn btn-primary" asp-action="Login" asp-controller="Account">Login <i class="bi bi-box-arrow-in-left"></i></a>
+        <a class="btn btn-primary" asp-action="Register" asp-controller="Account">Registrar</a>
+    }
+</div>

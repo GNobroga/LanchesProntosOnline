@@ -1,10 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VendaLanches.Models;
 using VendaLanches.Repositories.Interfaces;
 using VendaLanches.ViewModels;
 
 namespace VendaLanches.Controllers
-{
+{   
+    [Authorize]
     public class CarrinhoController : Controller 
     {   
         readonly ILancheRepository _lancheRepository;

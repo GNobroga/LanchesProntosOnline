@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VendaLanches.Data;
 using VendaLanches.Repositories;
@@ -11,6 +12,15 @@ builder.Services.AddDbContext<AppDbContext>(options => {
     var appConnection = builder.Configuration.GetConnectionString("AppConnection");
     options.UseNpgsql(appConnection);
 });
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
+    options.Password.RequireLowercase = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequiredUniqueChars = 0;
+    options.Password.RequireUppercase = false;
+})
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepositoryImpl>();
 builder.Services.AddScoped<ILancheRepository, LancheRepositoryImpl>();
@@ -36,6 +46,7 @@ app.UseSession(); // Add session middleware.
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

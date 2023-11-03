@@ -1,0 +1,26 @@
+@model LoginViewModel
+
+
+
+<div class="container mt-4">
+   <form class="col-4 d-flex flex-column gap-2" method="post">
+        <h1>Login</h1>
+        <p>Novo no site? <a asp-action="Register">Registre-se</a></p>
+        <input asp-for="@Model.ReturnUrl" class="form-control form-control-lg">
+        <div>
+            <label asp-for="@Model.Username"></label>
+            <input asp-for="@Model.Username" class="form-control form-control-lg">
+            <span asp-validation-for="@Model.Username" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="@Model.Password">Senha</label>
+            <input asp-for="@Model.Password" class="form-control form-control-lg">
+            <span asp-validation-for="@Model.Password" class="text-danger"></span>
+        </div>
+        @if (TempData.ContainsKey("Error") != null) 
+        {
+            <p class="text-danger mt-2">@TempData["Error"]</p>
+        }
+        <button type="submit" class="btn btn-lg btn-dark text-white align-self-start">Login</button>
+   </form>
+</div>

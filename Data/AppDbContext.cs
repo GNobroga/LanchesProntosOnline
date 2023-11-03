@@ -1,10 +1,11 @@
-using System.Configuration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using VendaLanches.Models;
 
 namespace VendaLanches.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Categoria> Categorias { get; set; }
 
@@ -15,8 +16,6 @@ namespace VendaLanches.Data
         public DbSet<Entrega> Entregas { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
-
-        protected sealed override void OnModelCreating(ModelBuilder modelBuilder) {}
     }
 
 }

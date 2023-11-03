@@ -6,5 +6,8 @@
     <p class="fs-4">@Html.Raw($"Preço: <strong class=\"text-success\">{Model.Preco:C}</strong>")</p>
     <p>@Model.DescricaoCurta</p>
     <p class="lead fs-6">@(Model.DescricaoDetalhada)</p>
-    <a class="btn btn-primary" asp-action="AdicionarItemNoCarrinhoCompra" asp-controller="Carrinho" asp-route-lancheId="@Model.LancheId">Incluir no Carrinho</a>
+    @if (User.Identity.IsAuthenticated) 
+    {
+        <a class="btn btn-primary" asp-action="AdicionarItemNoCarrinhoCompra" asp-controller="Carrinho" asp-route-lancheId="@Model.LancheId">Incluir no Carrinho</a>
+    }
 </div>

@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VendaLanches.Repositories.Interfaces;
 using VendaLanches.ViewModels;
 
 namespace VendaLanches.Controllers
 {
+    [Authorize]
     public class LancheController : Controller
     {
 

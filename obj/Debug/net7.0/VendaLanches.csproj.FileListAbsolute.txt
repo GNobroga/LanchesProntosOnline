@@ -58,3 +58,9 @@ C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\obj\Debug\net7.0\refint\VendaLanch
 C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\obj\Debug\net7.0\VendaLanches.pdb
 C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\obj\Debug\net7.0\VendaLanches.genruntimeconfig.cache
 C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\obj\Debug\net7.0\ref\VendaLanches.dll
+C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Gabriel\Desktop\ASP Net\VendaLanches\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

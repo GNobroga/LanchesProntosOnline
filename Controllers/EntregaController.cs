@@ -1,10 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using VendaLanches.Models;
 using VendaLanches.Repositories.Interfaces;
 
 namespace VendaLanches.Controllers
-{
+{   
+    [Authorize]
     public class EntregaController : Controller
     {
 
