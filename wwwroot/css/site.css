@@ -10,3 +10,21 @@ a {
   text-decoration: none;
   position: relative;
 }
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#root > div {
+  flex: 1;
+}
+
+#root > footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

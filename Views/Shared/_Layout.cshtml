@@ -12,13 +12,16 @@
 
     <partial name="_Navbar"/>
     
-    <div class="container-fluid m-0" style="padding: 0; padding-top: 3.5rem; padding-bottom: 5rem;">
-        @RenderBody()
+    <div id="root">
+        <div class="container-fluid m-0" style="padding: 0; padding-top: 3.5rem; padding-bottom: 5rem;">
+            @RenderBody()
+        </div>
+        <footer class="bg-dark text-white footer text-center">
+            Todos os direitos reservados
+        </footer>
     </div>
-
-    <footer class="border-top footer text-muted">
     
-    </footer>
+    
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
