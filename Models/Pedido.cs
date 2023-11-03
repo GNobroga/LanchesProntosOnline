@@ -19,5 +19,8 @@ namespace VendaLanches.Models
         public int Quantidade { get; set; }
 
         public string CarrinhoId { get; set; }
+
+        [ForeignKey("Entrega")]
+        public int? EntregaId { get; set; }
     }
 }

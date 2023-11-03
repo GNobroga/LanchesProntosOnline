@@ -1,19 +1,25 @@
 <header>
-        <nav class="navbar navbar-dark navbar-expand-sm navbar-toggleable-sm position-fixed top-0 w-100  box-shadow p-2  bg-dark shadow" style=" z-index: 99;">
+        <nav class="navbar navbar-dark navbar-expand-sm navbar-toggleable-sm position-fixed top-0 w-100  box-shadow p-2 px-3 bg-dark shadow" style=" z-index: 99;">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VendaLanches</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between gap-2">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item d-flex align-items-center">
+                        <li class="nav-item">
                             <a class="nav-link" link-active controller="Home" action="Index" active-class="text-primary">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" link-active controller="Contato" action="Index" active-class="text-primary">Contato</a>
-                            @await Component.InvokeAsync("CarrinhoBadge")
                         </li>
                     </ul>
+                    <form class="d-flex gap-3" asp-controller="Lanche" asp-action="Search" method="get">
+                        <input type="text" class="form-control" placeholder="Pesquisar" name="searchString">
+                        <button type="submit" class="btn btn-outline-light">Pesquisar</button>
+                    </form>
+                    @await Component.InvokeAsync("CarrinhoBadge")
                 </div>
             </div>
         </nav>

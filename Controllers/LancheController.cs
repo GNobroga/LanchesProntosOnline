@@ -19,7 +19,7 @@ namespace VendaLanches.Controllers
         public IActionResult List(int? cid) 
         {   
             var lanchesListViewModel = new LancheListViewModel { 
-                Lanches = _repository.Lanches.ToList().OrderBy(l => l.LancheId), 
+                Lanches = _repository.Lanches.OrderBy(l => l.LancheId), 
                 Categorias = _categoriaRepository.Categorias 
             };
 
@@ -51,6 +51,17 @@ namespace VendaLanches.Controllers
             var lancheDetailsViewModel = new LancheDetailsViewModel { Lanche = lanche, Quantidade = lancheQnt };
 
             return View(lancheDetailsViewModel);
+        }
+
+        public IActionResult Search(string searchString) 
+        {
+            var lanchesListViewModel = new LancheListViewModel { 
+                Lanches =  _repository.Lanches.Where(l => string.IsNullOrEmpty(searchString) || l.Nome.Contains(searchString)).OrderBy(l => l.LancheId),
+                Categorias = _categoriaRepository.Categorias,
+                CategoriaSelecionada = -1
+            };
+
+            return View("List", lanchesListViewModel);
         }
     }
 }

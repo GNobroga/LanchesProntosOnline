@@ -12,13 +12,11 @@ namespace VendaLanches.Data
 
         public DbSet<Pedido> Pedidos { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
+        public DbSet<Entrega> Entregas { get; set; }
 
-        protected sealed override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+
+        protected sealed override void OnModelCreating(ModelBuilder modelBuilder) {}
     }
 
 }

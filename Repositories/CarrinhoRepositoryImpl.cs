@@ -64,7 +64,13 @@ namespace VendaLanches.Repositories
 
         public void LimparCarrinho() 
         {
-            _context.Pedidos.RemoveRange(_context.Pedidos.Where(p => p.CarrinhoId == _carrinhoId));
+            var pedidos = _context.Pedidos.Where(p => p.CarrinhoId == _carrinhoId);
+
+            foreach (var p in pedidos) 
+            {
+                _context.Entry(p).State = EntityState.Deleted;
+            }
+            
             _context.SaveChanges();
         }
 

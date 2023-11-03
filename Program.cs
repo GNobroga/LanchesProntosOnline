@@ -15,6 +15,8 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepositoryImpl>();
 builder.Services.AddScoped<ILancheRepository, LancheRepositoryImpl>();
 builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepositoryImpl>();
+builder.Services.AddScoped<IEntregaRepository, EntregaRepositoryImpl>();
+
 
 // Session config
 builder.Services.AddDistributedMemoryCache();

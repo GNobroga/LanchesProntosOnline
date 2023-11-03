@@ -1,6 +1,6 @@
 @model CarrinhoCompraViewModel
 
-<div class="container mt-2">
+<div class="container mt-4">
     <div class="d-flex justify-content-between">
        <div class="d-flex align-items-center gap-3">
             <img src="/images/Full-Cart-icon.png" alt="Card icon" class="position-relative" style="bottom: 2px;">
@@ -59,7 +59,7 @@
         </tfoot>
     </table>
     <div class="d-flex gap-3">
-        <a href="#" class="btn btn-success">Encerrar Pedido</a>
+        <a class="btn btn-success" asp-controller="Entrega" asp-action="Checkout">Encerrar Pedido</a>
         <a asp-action="List" asp-controller="Lanche" class="btn text-white" style="background: #FF9000;">Continuar Comprando</a>
     </div>
 </div>
