@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using VendaLanches.Data;
 using VendaLanches.Repositories;
 using VendaLanches.Repositories.Interfaces;
+using VendaLanches.Services;
+using VendaLanches.Services.interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,12 +28,11 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepositoryImpl>();
 builder.Services.AddScoped<ILancheRepository, LancheRepositoryImpl>();
 builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepositoryImpl>();
 builder.Services.AddScoped<IEntregaRepository, EntregaRepositoryImpl>();
-
-
+builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitialImpl>();
 // Session config
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(); 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 var app = builder.Build();
 
@@ -50,7 +51,24 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
+
+app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
+
+// Allow use services to start application
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    var seedService = service.GetRequiredService<ISeedUserRoleInitial>();
+    seedService.SeedRoles();
+    seedService.SeedUsers();
+}
 
 app.Run();
+
+

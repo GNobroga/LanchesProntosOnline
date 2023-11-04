@@ -1,0 +1,30 @@
+<header>
+    <nav class="navbar navbar-dark navbar-expand-sm navbar-toggleable-sm position-fixed top-0 w-100  box-shadow p-2 px-3 bg-dark shadow" style=" z-index: 99;">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between gap-2">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="AdminCategoria" asp-action="List">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Usuários</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,6 +1,8 @@
 @model LancheListViewModel
 @{
     ViewData["Title"] = "Lanche - List";
+
+    int countLancheAvailable = 0;
 }
 
 <div class="container d-flex flex-column gap-5 mt-3">
@@ -23,7 +25,6 @@
             }
         </select>
     </div>
-
     @if (Model.Lanches.Count() == 0) 
     {
         <p class="display-5 fs-3 fw-bold text-center">Não há nenhum lanche.</p>
@@ -35,8 +36,9 @@
             @foreach (Lanche lanche in Model.Lanches)
             {
                 if (lanche.CategoriaId == Model.CategoriaSelecionada) 
-                {
+                {   
                     <partial name="_ListItem" for="@lanche"/>
+                    countLancheAvailable++;
                 }
                 else if (Model.CategoriaSelecionada == -1) 
                 {
@@ -44,6 +46,11 @@
                 }
             }
         </div>
+
+        if (countLancheAvailable == 0) 
+        {
+            <p class="display-6 fs-3 fw-semibold text-center text-primary">Não há nenhum lanche</p>
+        } 
     }
 
 </div>

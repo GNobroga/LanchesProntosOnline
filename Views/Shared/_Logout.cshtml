@@ -8,6 +8,10 @@
           
             <ul class="dropdown-menu">
               <li><a class="dropdown-item">Profile</a></li>
+              @if (User.IsInRole("Admin")) 
+              {
+                <li><a class="dropdown-item" asp-area="Admin" asp-action="Index" asp-controller="Admin">Control</a></li>
+              }
               <li><a class="dropdown-item" asp-action="Logout" asp-controller="Account">Logout</a></li>
             </ul>
           </div>

@@ -74,6 +74,7 @@ namespace VendaLanches.Controllers
 
             if (result.Succeeded) 
             {
+                await _userManager.AddToRoleAsync(newUser, "Member");
                 TempData["Success"] = "Conta criada com sucesso";
                 return RedirectToAction("Register");
             }
@@ -94,6 +95,11 @@ namespace VendaLanches.Controllers
             }
   
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult AccessDenied() 
+        {
+            return View();
         }
     }
 }

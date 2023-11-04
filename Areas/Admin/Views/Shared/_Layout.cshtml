@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VendaLanches</title>
+    <link rel="stylesheet" asp-area="Admin" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" asp-area="Admin" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" asp-area="Admin" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <partial name="_Navbar"/>
+    
+    <div id="root">
+        <div class="container-fluid m-0" style="padding: 0; padding-top: 3.5rem; padding-bottom: 5rem;">
+            @RenderBody()
+        </div>
+        <footer class="bg-dark text-white footer text-center">
+            Todos os direitos reservados
+        </footer>
+    </div>
+    
+    
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

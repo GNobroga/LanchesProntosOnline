@@ -1,0 +1,24 @@
+@model Categoria
+
+<div class="container mt-4 d-flex flex-column ">
+    <h1 class="display-5 fw-semibold">Editar</h1>
+    <form class="col-5 d-flex flex-column gap-3" method="post">
+        <div>
+            <input type="hidden" asp-for="@Model.CategoriaId">
+        </div>
+        <div>
+            <label asp-for="@Model.CategoriaNome"></label>
+            <input asp-for="@Model.CategoriaNome" class="form-control form-control-lg">
+            <span asp-validation-for="@Model.CategoriaNome" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="@Model.CategoriaDescricao"></label>
+            <textarea asp-for="@Model.CategoriaDescricao" class="form-control form-control-lg"></textarea>
+            <span asp-validation-for="@Model.CategoriaDescricao" class="text-danger"></span>
+        </div>
+        <div class=" align-self-start d-flex gap-2">
+            <a asp-action="List" type="submit" class="btn btn-danger">Voltar</a>
+            <button type="submit" class="btn btn-success">Editar</button>
+        </div>
+    </form>
+</div>
