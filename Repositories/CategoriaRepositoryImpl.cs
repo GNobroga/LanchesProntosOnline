@@ -6,7 +6,7 @@ namespace VendaLanches.Repositories
 {
     public class CategoriaRepositoryImpl : ICategoriaRepository
     {
-        public IEnumerable<Categoria> Categorias => _context.Categorias;
+        public IEnumerable<Categoria> Categorias => _context.Categorias.Where(c => !c.SoftDelete);
 
         readonly AppDbContext _context;
 

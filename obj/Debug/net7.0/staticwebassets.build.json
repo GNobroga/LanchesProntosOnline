@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Lm7GwhJU5yomBC9GYbK2R37coF6tXueqGl+RMrHdP80=",
+  "Hash": "h0kzs1p+grHS0d2A/ag0/Ezutwba4ZKSJx4zkfcaI+g=",
   "Source": "VendaLanches",
   "BasePath": "_content/VendaLanches",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Gabriel\\Desktop\\ASP Net\\VendaLanches\\wwwroot\\images\\0_4zD19kCDk2pObVqb.webp",
+      "SourceId": "VendaLanches",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Gabriel\\Desktop\\ASP Net\\VendaLanches\\wwwroot\\",
+      "BasePath": "_content/VendaLanches",
+      "RelativePath": "images/0_4zD19kCDk2pObVqb.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\0_4zD19kCDk2pObVqb.webp"
     },
     {
       "Identity": "C:\\Users\\Gabriel\\Desktop\\ASP Net\\VendaLanches\\wwwroot\\images\\carousel11.jpg",

@@ -53,7 +53,7 @@ namespace VendaLanches.Services
                     if (result.Succeeded) 
                     {
 
-                        await _userManager.AddToRoleAsync(user, "Admin").ConfigureAwait(false);
+                        await _userManager.AddToRoleAsync(user, "ADMIN");
                     }
                     
                 }

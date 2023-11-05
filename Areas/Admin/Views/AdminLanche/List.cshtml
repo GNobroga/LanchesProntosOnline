@@ -1,0 +1,58 @@
+@model IEnumerable<Lanche>
+
+<div class="container mt-4 d-flex flex-column gap-3">
+    <h1>Lanches</h1>
+  
+    <a class="d-flex gap-2 btn btn-dark align-self-start" asp-action="Create">
+        <i class="bi bi-file-earmark-plus-fill"></i>
+        Adicionar Nova
+    </a>
+
+    @if (Model.Count() == 0) 
+    {
+        <p class="text-center">Não há nenhuma lanche disponível</p>
+    }
+    else 
+    {
+        <table class="table">
+            <thead>
+                 <tr>
+                     <th>Código</th>
+                     <th>Nome</th>
+                     <th>Descrição</th>
+                     <th>Descrição Detalhada</th>
+                     <th>Preço</th>
+                     <th>Preferido</th>
+                     <th>Imagem</th>
+                     <th>Actions</th>
+                 </tr>
+            </thead>
+           <tbody>
+          
+                 @foreach (var lanche in Model) 
+                 {
+                     <tr>
+                         <td>@lanche.LancheId</td>
+                         <td>@lanche.Nome</td>
+                         <td>@lanche.DescricaoCurta</td>
+                         <td>@lanche.DescricaoDetalhada</td>
+                         <td class="text-success">@lanche.Preco.ToString("C")</td>
+                         <td>@(lanche.IsLanchePreferido ? "Sim" : "Não")</td>
+                         <td>
+                            @(lanche.ImagemUrl.Length > 20 ? lanche.ImagemUrl.Substring(0, 20) : lanche.ImagemUrl )
+                         </td>
+                         <td>
+                             <div class="d-flex gap-3">
+                                 <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@lanche.LancheId">Editar</a> 
+                                 <a asp-action="Delete" class="btn btn-danger" asp-route-id="@lanche.LancheId">Excluir</a>
+                             </div>
+                         </td>
+                     </tr>
+                 }
+           
+           </tbody>
+         </table>
+    }
+
+    
+</div>

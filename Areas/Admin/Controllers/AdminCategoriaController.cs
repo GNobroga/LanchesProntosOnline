@@ -1,12 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using VendaLanches.Data;
 using VendaLanches.Models;
 
 namespace VendaLanches.Areas.Admin.Controllers
 {   
     [Area("Admin")] 
+    [Authorize(Roles = "Admin")]
     public class AdminCategoriaController : Controller
     {   
 
@@ -19,7 +20,7 @@ namespace VendaLanches.Areas.Admin.Controllers
         
         public IActionResult List() 
         { 
-            var categorias = _context.Categorias.OrderBy(c => c.CategoriaId);
+            var categorias = _context.Categorias.Where(c => !c.SoftDelete).OrderBy(c => c.CategoriaId);
 
             return View(categorias);
         }
@@ -73,7 +74,9 @@ namespace VendaLanches.Areas.Admin.Controllers
                 return RedirectToAction("List");
            }
 
-            _context.Entry(categoria).State = EntityState.Deleted;
+            categoria.SoftDelete = true;
+            
+            _context.Entry(categoria).State = EntityState.Modified;
 
             _context.SaveChanges();
 

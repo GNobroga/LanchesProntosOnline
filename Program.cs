@@ -61,13 +61,12 @@ app.MapControllerRoute(
 );
 
 // Allow use services to start application
-using (var scope = app.Services.CreateScope())
-{
-    var service = scope.ServiceProvider;
-    var seedService = service.GetRequiredService<ISeedUserRoleInitial>();
-    seedService.SeedRoles();
-    seedService.SeedUsers();
-}
+using var scope = app.Services.CreateScope();
+var service = scope.ServiceProvider;
+var seedService = service.GetRequiredService<ISeedUserRoleInitial>();
+seedService.SeedRoles();
+seedService.SeedUsers();
+
 
 app.Run();
 

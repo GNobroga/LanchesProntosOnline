@@ -1,0 +1,54 @@
+@model IEnumerable<Entrega>
+
+<div class="container mt-4 d-flex flex-column gap-3">
+    <h1>Entregas</h1>
+    
+    @if (Model.Count() == 0) 
+    {
+        <p class="text-center">Não há nenhuma entrega disponível</p>
+    }
+    else 
+    {
+        <table class="table">
+            <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome Completo</th>
+                        <th>E-mail</th>
+                        <th>Endereço</th>
+                        <th>Estado</th>
+                        <th>Cidade</th>
+                        <th>Telefone</th>
+                        <th>Total</th>
+                        <th>Envio</th>
+                        <th>Actions</th>
+                    </tr>
+            </thead>
+            <tbody>
+            
+                    @foreach (var entrega in Model) 
+                    {
+                        <tr>
+                        <td>@entrega.EntregaId</td>
+                            <td>@($"{entrega.Nome} {entrega.Sobrenome}")</td>
+                            <td>@entrega.Email</td>
+                            <td>@entrega.Endereco</td>
+                            <td>@entrega.Estado</td>
+                            <td>@entrega.Cidade</td>
+                            <td>@entrega.Telefone</td>
+                            <td class="text-success">@entrega.PedidoTotal.ToString("c")</td>
+                            <td>@entrega.PedidoEnviado</td>
+                            <td>
+                                <div class="d-flex gap-3"> 
+                                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@entrega.EntregaId">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+            
+            </tbody>
+            </table>
+    }
+
+    
+</div>

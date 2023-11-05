@@ -23,5 +23,7 @@ namespace VendaLanches.Models
         public string CategoriaDescricao { get; set; }
 
         public ICollection<Lanche> Lanches { get; set; }
+
+        public bool SoftDelete { get; set; }
     }
 }

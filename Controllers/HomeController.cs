@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VendaLanches.Models;
 using VendaLanches.Repositories.Interfaces;
@@ -9,10 +10,12 @@ namespace VendaLanches.Controllers
     {
 
         readonly ILancheRepository _lancheRepository;
+        readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(ILancheRepository lancheRepository) 
+        public HomeController(ILancheRepository lancheRepository, UserManager<IdentityUser> userManager) 
         {
             _lancheRepository = lancheRepository;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {

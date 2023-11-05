@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace VendaLanches.Areas.Admin.Controllers
 {   
-    [Authorize(Roles = "Admin")]
+    
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         public IActionResult Index() 

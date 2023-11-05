@@ -1,0 +1,64 @@
+@model Lanche
+
+<div class="container mt-4 d-flex flex-column ">
+    <h1 class="display-5 fw-semibold">Editar Lanche</h1>
+    <form class="row  row-cols-2 " method="post">
+        <input asp-for="@Model.LancheId"/>
+        <div class="d-flex gap-3 flex-column">
+            <h1 class="display-5 fs-4">Informações 1</h1>
+            <div>
+                <label asp-for="@Model.Nome"></label>
+                <input asp-for="@Model.Nome" class="form-control form-control-lg">
+                <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.DescricaoCurta"></label>
+                <input asp-for="@Model.DescricaoCurta" class="form-control form-control-lg"/>
+                <span asp-validation-for="@Model.DescricaoCurta" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.DescricaoDetalhada"></label>
+                <textarea style="min-height: 125px;" asp-for="@Model.DescricaoDetalhada" class="form-control form-control-lg"></textarea>
+                <span asp-validation-for="@Model.DescricaoDetalhada" class="text-danger"></span>
+            </div>
+            <div class="  align-self-start d-flex gap-2">
+                <a asp-action="List" type="submit" class="btn btn-danger">Voltar</a>
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+        </div>
+       <div class="d-flex flex-column gap-3">
+            <h1 class="display-5 fs-4">Informações 2</h1>
+            <div>
+                <label asp-for="@Model.Preco"></label>
+                <input asp-for="@Model.Preco" class="form-control form-control-lg"/>
+                <span asp-validation-for="@Model.Preco" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.ImagemUrl"></label>
+                <input asp-for="@Model.ImagemUrl" class="form-control form-control-lg"/>
+                <span asp-validation-for="@Model.ImagemUrl" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.ImagemThumbnailUrl"></label>
+                <input asp-for="@Model.ImagemThumbnailUrl" class="form-control form-control-lg"/>
+                <span asp-validation-for="@Model.ImagemThumbnailUrl" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.Categoria"></label>
+                <select asp-for="@Model.CategoriaId" class="form-select">
+                    <option value="" disabled selected>Selecione</option>
+                    @foreach (var c in ViewBag.Categorias) 
+                    {
+                        <option value="@c.CategoriaId">@c.CategoriaNome</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.CategoriaId" class="text-danger"></span>
+            </div>
+            <div class="form-check form-switch">
+                <input asp-for="@Model.IsLanchePreferido" class="form-check-input"/>
+                <label asp-for="@Model.IsLanchePreferido" class="form-check-label"></label>
+                <span asp-validation-for="@Model.IsLanchePreferido" class="text-danger"></span>
+            </div>
+       </div>
+    </form>
+</div>
