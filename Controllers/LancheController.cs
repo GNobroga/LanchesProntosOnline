@@ -1,3 +1,4 @@
+using System.Data.Entity.Core.Common.CommandTrees;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VendaLanches.Repositories.Interfaces;
@@ -8,7 +9,6 @@ namespace VendaLanches.Controllers
     [Authorize]
     public class LancheController : Controller
     {
-
         readonly ILancheRepository _repository;
         readonly ICategoriaRepository _categoriaRepository;
 
@@ -18,28 +18,13 @@ namespace VendaLanches.Controllers
             _categoriaRepository = categoriaRepository;
         }
 
-        public IActionResult List(int? cid) 
+        public IActionResult List(int cid = -1, int size = 2, int page = 1, int limit = 2) 
         {   
             var lanchesListViewModel = new LancheListViewModel { 
-                Lanches = _repository.Lanches.OrderBy(l => l.LancheId), 
-                Categorias = _categoriaRepository.Categorias 
+                Lanches = _repository.Lanches.OrderBy(l => l.LancheId).Where(l => cid == -1 || l.CategoriaId == cid).Skip(size * (page - 1)).Take(limit), 
+                Categorias = _categoriaRepository.Categorias,
+                CategoriaSelecionada = cid 
             };
-
-            int categoriaId = -1;
-
-            if (cid.HasValue)
-            {
-                categoriaId = cid.Value;
-
-                if (_categoriaRepository.Categorias.Any(c => c.CategoriaId == categoriaId)) 
-                {
-                    lanchesListViewModel.CategoriaSelecionada = categoriaId;
-                } 
-            } 
-         
-    
-            lanchesListViewModel.CategoriaSelecionada = categoriaId;
-
             return View(lanchesListViewModel);
         }
 
@@ -58,7 +43,7 @@ namespace VendaLanches.Controllers
         public IActionResult Search(string searchString) 
         {
             var lanchesListViewModel = new LancheListViewModel { 
-                Lanches =  _repository.Lanches.Where(l => string.IsNullOrEmpty(searchString) || l.Nome.Contains(searchString)).OrderBy(l => l.LancheId),
+                Lanches =  _repository.Lanches.Where(l => string.IsNullOrEmpty(searchString) || l.Nome.ToLower().Contains(searchString.ToLower())).OrderBy(l => l.LancheId),
                 Categorias = _categoriaRepository.Categorias,
                 CategoriaSelecionada = -1
             };

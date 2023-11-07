@@ -2,7 +2,7 @@
 
 <div class="lanche">
     <a class="display-6 fs-5 fw-semibold" asp-action="Details" asp-controller="Lanche" asp-route-lancheId="@Model.LancheId">@Model.Nome</a>
-    <img src="@Model.ImagemUrl" alt="@Model.DescricaoCurta">
+    <img src="@Model.ImagemUrl" alt="@Model.DescricaoCurta" style="max-width: 128px;" class="img-fluid d-block my-2">
     <p class="fs-4">@Html.Raw($"Preço: <strong class=\"text-success\">{Model.Preco:C}</strong>")</p>
     <p>@Model.DescricaoCurta</p>
     <p class="lead fs-6">@(Model.DescricaoDetalhada)</p>

@@ -13,7 +13,7 @@
             <option value="-1">Todos os lanches</option>
             @foreach (Categoria c in Model.Categorias)
             {
-                if (Model.CategoriaSelecionada == c.CategoriaId) 
+                if (Model.CategoriaSelecionada == c.CategoriaId)
                 {
                     <option value="@c.CategoriaId" selected>@(c.CategoriaNome)</option>
                 }
@@ -21,10 +21,13 @@
                 {
                     <option value="@c.CategoriaId">@(c.CategoriaNome)</option>
                 }
-                
             }
         </select>
     </div>
+    <div class="row">
+        @await Component.InvokeAsync("Pagination")
+    </div>
+
     @if (Model.Lanches.Count() == 0) 
     {
         <p class="display-5 fs-3 fw-bold text-center">Não há nenhum lanche.</p>
@@ -35,22 +38,9 @@
         <div class="row row-cols-md-3  row-cols-lg-5 row-cols-1 row-cols-sm-2 row-cols-sm-2 gap-md-5 align-items-center justify-content-center" style="cursor: pointer;">
             @foreach (Lanche lanche in Model.Lanches)
             {
-                if (lanche.CategoriaId == Model.CategoriaSelecionada) 
-                {   
-                    <partial name="_ListItem" for="@lanche"/>
-                    countLancheAvailable++;
-                }
-                else if (Model.CategoriaSelecionada == -1) 
-                {
-                    <partial name="_ListItem" for="@lanche"/>
-                }
+                <partial name="_ListItem" for="@lanche"/>
             }
         </div>
-
-        if (countLancheAvailable == 0) 
-        {
-            <p class="display-6 fs-3 fw-semibold text-center text-primary">Não há nenhum lanche</p>
-        } 
     }
 
 </div>

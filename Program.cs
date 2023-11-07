@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using VendaLanches;
 using VendaLanches.Data;
 using VendaLanches.Repositories;
 using VendaLanches.Repositories.Interfaces;

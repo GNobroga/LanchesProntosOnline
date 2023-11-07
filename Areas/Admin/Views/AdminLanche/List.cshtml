@@ -39,7 +39,7 @@
                          <td class="text-success">@lanche.Preco.ToString("C")</td>
                          <td>@(lanche.IsLanchePreferido ? "Sim" : "Não")</td>
                          <td>
-                            @(lanche.ImagemUrl.Length > 20 ? lanche.ImagemUrl.Substring(0, 20) : lanche.ImagemUrl )
+                            @lanche.ImagemUrl
                          </td>
                          <td>
                              <div class="d-flex gap-3">

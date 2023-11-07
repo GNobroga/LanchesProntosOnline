@@ -1,0 +1,19 @@
+@model FileInfo[]
+
+<div class="container mt-4">
+    <div class="d-fex flex-column">
+        <h1>Images</h1>
+        <a asp-action="UploadFile">
+            <i class="bi bi-folder-plus"></i>
+            Nova imagem
+        </a>
+    </div>
+    <div class="row mt-4">
+        @foreach(var file in Model) 
+        {
+            <div class="col">
+                <img src="/images/lanches/@file.Name" alt=""  class="img-fluid img-thumbnail" style="max-width: 300px;">
+            </div>
+        }
+    </div>
+</div>

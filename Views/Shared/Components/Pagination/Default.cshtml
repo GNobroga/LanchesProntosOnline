@@ -1,0 +1,13 @@
+@model dynamic
+
+<div>
+    @if (ViewBag.HasPrevious)
+    {
+        <a class="btn btn-primary" asp-action="List" asp-controller="Lanche" asp-route-page="@(Model.Page - 1)" asp-route-cid="@(Model.Cid)">Anterior</a>
+    }
+   
+    @if (ViewBag.HasNext) 
+    {
+        <a class="btn btn-primary" asp-action="List" asp-controller="Lanche" asp-route-page="@(Model.Page + 1)" asp-route-cid="@(Model.Cid)">Próximo</a>
+    }
+</div>

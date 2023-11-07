@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h0kzs1p+grHS0d2A/ag0/Ezutwba4ZKSJx4zkfcaI+g=",
+  "Hash": "WafX73cCbQuaOHEncWe0CQMSlNaVtC6LxaS/T1lbc6E=",
   "Source": "VendaLanches",
   "BasePath": "_content/VendaLanches",
   "Mode": "Default",
@@ -338,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Gabriel\\Desktop\\ASP Net\\VendaLanches\\wwwroot\\lanches",
+      "SourceId": "VendaLanches",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Gabriel\\Desktop\\ASP Net\\VendaLanches\\wwwroot\\",
+      "BasePath": "_content/VendaLanches",
+      "RelativePath": "lanches",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lanches"
     },
     {
       "Identity": "C:\\Users\\Gabriel\\Desktop\\ASP Net\\VendaLanches\\wwwroot\\lib\\bootstrap-icons\\bootstrap-icons.svg",

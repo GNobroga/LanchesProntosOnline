@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using VendaLanches.Models;
 using VendaLanches.Repositories.Interfaces;
 
@@ -16,6 +17,8 @@ namespace VendaLanches.Controllers
         {
             _lancheRepository = lancheRepository;
             _userManager = userManager;
+
+
         }
         public IActionResult Index()
         {
